@@ -1,0 +1,16 @@
+<!-- TODO
+- Button to display details;
+- Paragraph that show the details
+- Toggle the display on the button;
+- Each click should give a log into an array;
+- Show the logs below the paragraph;
+- The 5th log have must have a blue background
+-->
+
+<button class="btn btn-primary" (click)="toggleVisibility()">
+  Show Details
+</button>
+<p *ngIf="detailVisibility">Something something</p>
+<p *ngFor="let log of changeLogs" [ngClass]="{ 'blue-bg': log > 4 }">
+  Log: N{{ log }}
+</p>

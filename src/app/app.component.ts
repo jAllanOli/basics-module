@@ -5,16 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  userName!: string;
-  serverStatus = 'offline';
-
-  onClick() {
-    this.userName = '';
-    this.serverStatus = 'online';
-  }
-
-  getColor() {
-    return this.serverStatus === 'online' ? 'green' : 'red';
-  }
-}
+export class AppComponent {}

@@ -1,0 +1,18 @@
+<input type="text" [(ngModel)]="userName" />
+<p *ngIf="userName; else noUser">User: {{ userName }}</p>
+<ng-template #noUser>
+  <p>No username inputed</p>
+</ng-template>
+
+<button class="btn btn-primary" (click)="onClick()" [disabled]="!userName">
+  reset
+</button>
+
+<p [ngStyle]="{ backgroundColor: 'red' }">Red Background</p>
+
+<div
+  [ngStyle]="{ backgroundColor: getColor() }"
+  [ngClass]="{ whiteTxt: serverStatus === 'online' }"
+>
+  server status
+</div>
