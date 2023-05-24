@@ -6,7 +6,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./game-control.component.css'],
 })
 export class GameControlComponent {
-  @Output() incNumber = new EventEmitter<number>();
+  @Output() intervalFired = new EventEmitter<number>();
 
   counter: number = 0;
 
@@ -18,7 +18,7 @@ export class GameControlComponent {
 
   startIncrement() {
     this.interval = setInterval(() => {
-      this.incNumber.emit(this.counter);
+      this.intervalFired.emit(this.counter);
       this.counter++;
     }, 1000);
   }
