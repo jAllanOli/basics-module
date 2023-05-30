@@ -19,16 +19,9 @@ export class UsersServiceService {
 
   constructor(private counterService: CounterService) {}
 
-  setToInactive(name: string) {
-    this.getUser(name).isActive = false;
+  toggleStatus(name: string) {
+    this.getUser(name).isActive = !this.getUser(name).isActive;
     this.counterService.increaseCounter();
-    console.log(this.users);
-  }
-
-  setToActive(name: string) {
-    this.getUser(name).isActive = true;
-    this.counterService.increaseCounter();
-    console.log(this.users);
   }
 
   getUsersByStatus(status: boolean): User[] {

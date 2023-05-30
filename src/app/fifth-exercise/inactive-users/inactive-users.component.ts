@@ -16,6 +16,6 @@ export class InactiveUsersComponent implements DoCheck {
   }
 
   setToActive(name: string) {
-    this.userServices.setToActive(name);
+    this.userServices.toggleStatus(name);
   }
 }
