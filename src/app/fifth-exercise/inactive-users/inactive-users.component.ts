@@ -1,17 +1,21 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { UsersServiceService } from '../users-service.service';
+import { Component, DoCheck } from '@angular/core';
+import { User, UsersServiceService } from '../users-service.service';
 
 @Component({
   selector: 'app-inactive-users',
   templateUrl: './inactive-users.component.html',
   styleUrls: ['./inactive-users.component.css'],
 })
-export class InactiveUsersComponent {
-  users = this.userServices.inactiveUsers;
+export class InactiveUsersComponent implements DoCheck {
+  users!: User[];
 
   constructor(private userServices: UsersServiceService) {}
 
-  setToActive(i: number) {
-    this.userServices.setToActive(i);
+  ngDoCheck(): void {
+    this.users = this.userServices.getUsersByStatus(false);
+  }
+
+  setToActive(name: string) {
+    this.userServices.setToActive(name);
   }
 }

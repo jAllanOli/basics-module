@@ -1,22 +1,41 @@
 import { Injectable } from '@angular/core';
 import { CounterService } from './counter.service';
 
+export type User = {
+  name: string;
+  isActive: boolean;
+};
+
 @Injectable()
 export class UsersServiceService {
-  activeUsers = ['Max', 'Anna'];
-  inactiveUsers = ['Chris', 'Manu'];
+  users: User[] = [
+    { name: 'Max', isActive: true },
+    { name: 'Jerry', isActive: false },
+    { name: 'Anna', isActive: true },
+    { name: 'Manu', isActive: false },
+    { name: 'Thom', isActive: true },
+    { name: 'Ricky', isActive: false },
+  ];
 
   constructor(private counterService: CounterService) {}
 
-  setToInactive(id: number) {
-    this.inactiveUsers.push(this.activeUsers[id]);
-    this.activeUsers.splice(id, 1);
+  setToInactive(name: string) {
+    this.getUser(name).isActive = false;
     this.counterService.increaseCounter();
+    console.log(this.users);
   }
 
-  setToActive(id: number) {
-    this.activeUsers.push(this.inactiveUsers[id]);
-    this.inactiveUsers.splice(id, 1);
+  setToActive(name: string) {
+    this.getUser(name).isActive = true;
     this.counterService.increaseCounter();
+    console.log(this.users);
+  }
+
+  getUsersByStatus(status: boolean): User[] {
+    return this.users.filter((user) => user.isActive === status);
+  }
+
+  private getUser(name: string): User {
+    return this.users.filter((user) => user.name === name)[0];
   }
 }

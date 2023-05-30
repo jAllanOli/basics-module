@@ -1,17 +1,21 @@
-import { Component } from '@angular/core';
-import { UsersServiceService } from '../users-service.service';
+import { Component, DoCheck } from '@angular/core';
+import { User, UsersServiceService } from '../users-service.service';
 
 @Component({
   selector: 'app-active-users',
   templateUrl: './active-users.component.html',
   styleUrls: ['./active-users.component.css'],
 })
-export class ActiveUsersComponent {
-  users = this.userServices.activeUsers;
+export class ActiveUsersComponent implements DoCheck {
+  users!: User[];
 
   constructor(private userServices: UsersServiceService) {}
 
-  setToInactive(id: number) {
-    this.userServices.setToInactive(id);
+  ngDoCheck(): void {
+    this.users = this.userServices.getUsersByStatus(true);
+  }
+
+  setToInactive(name: string) {
+    this.userServices.setToInactive(name);
   }
 }
