@@ -8,6 +8,7 @@ import { ThirdExerciseComponent } from './third-exercise/third-exercise.componen
 import { ForthExerciseModule } from './forth-exercise/forth-exercise.module';
 import { FifthExerciseModule } from './fifth-exercise/fifth-exercise.module';
 import { SixthExerciseModule } from './sixth-exercise/sixth-exercise.module';
+import { SeventhExerciseModule } from './seventh-exercise/seventh-exercise.module';
 
 @NgModule({
   declarations: [AppComponent, UserComponent, ThirdExerciseComponent],
@@ -17,6 +18,7 @@ import { SixthExerciseModule } from './sixth-exercise/sixth-exercise.module';
     ForthExerciseModule,
     FifthExerciseModule,
     SixthExerciseModule,
+    SeventhExerciseModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
